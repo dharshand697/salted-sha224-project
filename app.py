@@ -155,11 +155,10 @@ def logout():
 # ============================================================
 import os
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     import os
     init_db()
-    # Railway assigns a PORT dynamically, default to 8080 if not found
-    port = int(os.environ.get("PORT", 8080))
-    print(f"🚀 Flask server running on http://0.0.0.0:{port}")
-    app.run(host="0.0.0.0", port=port)
+    port = int(os.environ.get('PORT', 8080))  # Railway expects 8080
+    print(f"🚀 Flask server running on port {port}")
+    app.run(host='0.0.0.0', port=port)
 

@@ -2,8 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import sqlite3
 from utils import generate_salt, hash_password, verify_password
 import os
-RECAPTCHA_SITE_KEY = os.getenv("6Lc4YwosAAAAAEIf_UbRAlDM36xiIyv2w3w3SFTn")
-ECAPTCHA_SECRET_KEY = os.getenv("6Lc4YwosAAAAAEIf_UbRAlDM36xiIyv2w3w3SFTn")
+
+RECAPTCHA_SITE_KEY = os.getenv("RECAPTCHA_SITE_KEY")
+RECAPTCHA_SECRET_KEY = os.getenv("RECAPTCHA_SECRET_KEY")
+
+
 
 # ============================================================
 #  CONFIGURATION

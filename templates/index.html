@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Salted SHA-224 Demo</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="hero">
+    <div class="card">
+      <h1>Salted SHA-224 Demo</h1>
+      <p>Try the demo: register a user and login. Passwords are stored as <code>salt || SHA-224(salt+password)</code>.</p>
+
+      <div class="buttons">
+        {% if session.get('user') %}
+          <a href="/logout" class="btn">Logout</a>
+          <a href="/admin" class="btn outline">Admin</a>
+        {% else %}
+          <a href="/register" class="btn">Register</a>
+          <a href="/login" class="btn outline">Login</a>
+          <a href="/admin" class="btn outline" style="opacity:0.8; margin-left:8px;">Admin</a>
+        {% endif %}
+      </div>
+
+      {% if session.get('user') %}
+        <p style="margin-top:12px;color:#cfeeea">Signed in as <strong>{{ session['user'] }}</strong></p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

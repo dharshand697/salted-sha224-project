@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    table { width:100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border-bottom: 1px solid rgba(255,255,255,0.15); padding: 8px; font-size: 14px; }
+    th { color:#aef7e5; text-align:left; }
+    td { color:#e8faf8; }
+    .table-container { max-height: 400px; overflow-y: auto; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="card" style="width:800px;">
+      <h2>Registered Users</h2>
+      <p>Showing <b>username</b>, <b>salt</b>, and <b>SHA-224 hash</b></p>
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Username</th>
+            <th>Salt (hex)</th>
+            <th>Hash (SHA-224)</th>
+          </tr>
+          {% for u in users %}
+          <tr>
+            <td>{{u[0]}}</td>
+            <td style="word-break: break-all;">{{u[1]}}</td>
+            <td style="word-break: break-all;">{{u[2]}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <a class="btn" href="/">Home</a>
+    </div>
+  </div>
+</body>
+</html>

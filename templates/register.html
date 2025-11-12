@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Register - Salted SHA-224</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <!-- ✅ Google reCAPTCHA API -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #09203f, #537895);
+      color: #e3f2fd;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .hero {
+      text-align: center;
+      width: 100%;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 0 auto;
+      width: 350px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #bbdefb;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px 0;
+      border-radius: 6px;
+      border: none;
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 15px;
+    }
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 5px #64b5f6;
+    }
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+    .btn {
+      background: linear-gradient(to right, #2196f3, #64b5f6);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #64b5f6, #2196f3);
+    }
+    .btn.outline {
+      background: transparent;
+      border: 1px solid #64b5f6;
+    }
+    ul.messages {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 15px;
+    }
+    ul.messages li {
+      font-size: 14px;
+      margin: 4px 0;
+    }
+    li.success { color: #81c784; }
+    li.warning { color: #ffeb3b; }
+    li.danger  { color: #ef5350; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="card">
+      <h2>Create Account</h2>
+
+      <!-- Flash messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="messages">
+            {% for category, msg in messages %}
+              <li class="{{category}}">{{msg}}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <!-- Registration form -->
+      <form method="post">
+        <label>Username</label>
+        <input name="username" placeholder="Enter username or email" required>
+
+        <label>Password</label>
+        <input name="password" type="password" placeholder="Enter password" required>
+
+        <!-- ✅ Google reCAPTCHA box -->
+        <div class="g-recaptcha" 
+             data-sitekey="6Lc4YwosAAAAAEN6I4-m1R6Ny5BhPBG3f73cP-Rv"
+             style="margin-top:15px; display:flex; justify-content:center;">
+        </div>
+
+        <div class="actions">
+          <button class="btn" type="submit">Register</button>
+          <a class="btn outline" href="/">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

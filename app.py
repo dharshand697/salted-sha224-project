@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import sqlite3
 from utils import generate_salt, hash_password, verify_password
 import os
-
-RECAPTCHA_SECRET_KEY = "6Lc4YwosAAAAAEIf_UbRAlDM36xiIyv2w3w3SFTn"
+RECAPTCHA_SITE_KEY = os.getenv("6Lc4YwosAAAAAEIf_UbRAlDM36xiIyv2w3w3SFTn")
+ECAPTCHA_SECRET_KEY = os.getenv("6Lc4YwosAAAAAEIf_UbRAlDM36xiIyv2w3w3SFTn")
 
 # ============================================================
 #  CONFIGURATION
@@ -155,8 +155,11 @@ def logout():
 # ============================================================
 import os
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    import os
     init_db()
-    port = int(os.environ.get('PORT', 5000))
-    print(f"🚀 Flask server running on port {port}")
-    app.run(host='0.0.0.0', port=port)
+    # Railway assigns a PORT dynamically, default to 8080 if not found
+    port = int(os.environ.get("PORT", 8080))
+    print(f"🚀 Flask server running on http://0.0.0.0:{port}")
+    app.run(host="0.0.0.0", port=port)
+

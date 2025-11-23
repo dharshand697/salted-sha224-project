@@ -1,3 +1,6 @@
-Flask==2.2.5
-gunicorn==21.2.0
-requests
+Flask
+gunicorn
+itsdangerous
+Jinja2
+Werkzeug
+# If utils.py uses hashlib or random → no need to add
